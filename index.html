@@ -1,0 +1,96 @@
+<!doctype html>
+
+<head>
+    <title>:custom_emoji:プレビュー</title>
+    <script>
+        function $(a) { return document.getElementById(a) }
+        function ce(a) { return document.createElement(a) }
+        function ct(a) { return document.createTextNode(a) }
+        function cl(e) { while (e.firstChild) { e.removeChild(e.firstChild) } }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            更新();
+
+            $("i_btn").addEventListener("click", プレビュー追加, false);
+            const input = document.getElementsByTagName("input");
+            for (let i = 0; i < input.length; i++) {
+                input[i].addEventListener("change", 更新, false);
+            }
+        }, false)
+
+        function 要素生成(bg, size) {
+            const e = ce("div");
+            e.className = "pv_child";
+            e.style.backgroundColor = bg;
+
+            const title = e.appendChild(ce("h1"));
+            title.className = "pv_title";
+            const str = `${size}px ${bg}`;
+            title.appendChild(ct(str))
+
+            const img = e.appendChild(ce("img"));
+            img.className = "pv_img";
+            img.style.height = size + "px";
+            const url = URL.createObjectURL($("u_file").files[0])
+            img.src = url;
+
+            return e;
+        }
+
+        function 更新() {
+            const ec = $("o_color");
+            const es = $("o_size");
+
+            cl(ec);
+            cl(es);
+
+            ec.appendChild(ct($("i_color").value));
+            es.appendChild(ct($("i_size").value));
+
+        }
+
+        function プレビュー追加() {
+            const color = $("i_color").value;
+            const size = $("i_size").value;
+            const e = 要素生成(color, size);
+            $("pv_parent").appendChild(e);
+        }
+
+    </script>
+    <style>
+        #pv_parent {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .pv_child {
+            min-width: 256px;
+            min-height: 256px;
+            margin: 6px;
+            padding: 6px;
+        }
+
+        .pv_title {
+            background: white;
+            color: #333;
+            font-style: normal;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form_upload">
+        <input type="file" id="u_file">
+    </form>
+
+    <div id=" setting">
+        背景色 <input type="color" id="i_color"><span id="o_color"></span><br>
+        サイズ <input type="range" id="i_size" min="1" max="256" step="1" value="18"><span id="o_size"></span>px<br>
+        <input type="button" value="生成" id="i_btn">
+    </div>
+
+    <div id="pv_parent">
+
+    </div>
+</body>
