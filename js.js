@@ -122,15 +122,17 @@ function プリセットプレビュー追加() {
         const size = i.size;
 
         const bg = i.bg;
-        let rad;
+        let rad, h;
 
         if (i.btn) {
             rad = "6px";
+            h = "auto";
         } else {
             rad = "0";
+            h = `${36 + i.size}px`;
         }
 
-        const style_container = { backgroundColor: bg, borderRadius: rad };
+        const style_container = { backgroundColor: bg, borderRadius: rad, height: h };
         const style_img = { height: `${size}px` };
         const e = 要素生成(url, style_container, style_img, title);
         $("pv_parent").appendChild(e);
