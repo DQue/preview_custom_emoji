@@ -1,4 +1,3 @@
-
 function $(a) { return document.getElementById(a) }
 function ce(a) { return document.createElement(a) }
 function ct(a) { return document.createTextNode(a) }
@@ -15,7 +14,13 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 }, false)
 
-function 要素生成(bg, size, ttl) {
+function 画像URL取得() {
+    const e = $("u_file");
+    if (!e || !e.files || e.files.length === 0) return null;
+    return URL.createObjectURL($("u_file").files[0])
+}
+
+function 要素生成(url, bg, size, ttl) {
     const e = ce("div");
     e.className = "pv_child";
 
@@ -31,7 +36,6 @@ function 要素生成(bg, size, ttl) {
     const img = container.appendChild(ce("img"));
     img.className = "pv_img";
     img.style.height = size + "px";
-    const url = URL.createObjectURL($("u_file").files[0])
     img.src = url;
 
     return e;
@@ -40,9 +44,9 @@ function 要素生成(bg, size, ttl) {
 function 更新() {
     const ec = $("o_color");
     const es = $("o_size");
+    const url = 画像URL取得();
 
-    const image = $("u_file").files ? $("u_file").files.length : 0;
-    $("setting").hidden = image === 0 ? true : false;
+    $("setting").hidden = url === null ? true : false;
 
 
 
@@ -51,17 +55,20 @@ function 更新() {
 
     ec.appendChild(ct($("i_color").value));
     es.appendChild(ct($("i_size").value));
-
 }
 
 function プレビュー追加() {
+    const url = 画像URL取得();
+    if (url === null) return;
     const color = $("i_color").value;
     const size = $("i_size").value;
-    const e = 要素生成(color, size);
+    const e = 要素生成(url, color, size);
     $("pv_parent").appendChild(e);
 }
 
 function プリセットプレビュー追加() {
+    const url = 画像URL取得();
+    if (url === null) return;
     const list = [
         { title: "Mi Light 本文", bg: "rgb(255,255,255)", size: 29.3906 },
         { title: "Mi Light リアクション欄", bg: "rgb(242,242,242)", size: 18.375 },
@@ -79,7 +86,7 @@ function プリセットプレビュー追加() {
         const bg = i.bg;
         const size = i.size;
         const title = i.title;
-        const e = 要素生成(bg, size, title);
+        const e = 要素生成(url, bg, size, title);
         $("pv_parent").appendChild(e);
     }
 }
