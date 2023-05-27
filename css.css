@@ -1,0 +1,31 @@
+#pv_parent {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pv_child {
+    min-width: 120px;
+    min-height: 40px;
+    margin: 4px;
+    padding: 4px;
+    border: 1px solid #888;
+    background: #999;
+}
+
+.pv_container {
+    display: inline-block;
+    padding: 12px;
+}
+
+.pv_title {
+    background: #333;
+    color: #eee;
+    font-style: normal;
+    font-size: 16px;
+}
+
+.form {
+    background: #eee;
+    display: inline-block;
+    padding: 12px;
+}
