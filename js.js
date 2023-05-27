@@ -1,3 +1,5 @@
+DEBUG = true; DEBUG_n1 = 0;
+
 function $(a) { return document.getElementById(a) }
 function ce(a) { return document.createElement(a) }
 function ct(a) { return document.createTextNode(a) }
@@ -55,6 +57,8 @@ function 更新() {
 
     ec.appendChild(ct($("i_color").value));
     es.appendChild(ct($("i_size").value));
+
+    if (DEBUG) if_debug();
 }
 
 function プレビュー追加() {
@@ -89,4 +93,17 @@ function プリセットプレビュー追加() {
         const e = 要素生成(url, bg, size, title);
         $("pv_parent").appendChild(e);
     }
+}
+
+
+
+
+
+function if_debug() {
+    $("setting").hidden = false;
+    if (DEBUG_n1 > 0) return;
+
+    DEBUG_n1++;
+    const e = 要素生成("https://dque.github.io/preview_custom_emoji/sample.png", "#abcdef", 80, "DEBUG");
+    $("pv_parent").appendChild(e);
 }
