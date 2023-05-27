@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", () => {
     $("i_btn_preset").addEventListener("click", プリセットプレビュー追加, false);
     const input = document.getElementsByTagName("input");
     for (let i = 0; i < input.length; i++) {
-        input[i].addEventListener("change", 更新, false);
+        input[i].addEventListener("input", 更新, false);
     }
 }, false)
 
