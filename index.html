@@ -7,23 +7,32 @@
 </head>
 
 <body>
-    <form id="form_upload">
-        <input type="file" id="u_file" accept="image/*">
-    </form>
+    <main>
+        <form id="form_upload">
+            <input type="file" id="u_file" accept="image/*">
+        </form>
 
-    <div id="setting"><br>
-        <div class="form">
-            <input type="button" value="プリセット生成" id="i_btn_preset">
+        <div id="setting"><br>
+            <div class="form">
+                <input type="button" value="プリセット生成" id="i_btn_preset">
+            </div>
+            または
+            <div class="form">
+                背景色 <input type="color" id="i_color"><span id="o_color"></span><br>
+                サイズ <input type="range" id="i_size" min="1" max="256" step="1" value="18"><span
+                    id="o_size"></span>px<br>
+                <input type="button" value="この設定で生成" id="i_btn">
+            </div>
         </div>
-        または
-        <div class="form">
-            背景色 <input type="color" id="i_color"><span id="o_color"></span><br>
-            サイズ <input type="range" id="i_size" min="1" max="256" step="1" value="18"><span id="o_size"></span>px<br>
-            <input type="button" value="この設定で生成" id="i_btn">
+
+        <div id="pv_parent">
+
         </div>
-    </div>
+    </main>
 
-    <div id="pv_parent">
-
-    </div>
+    <footer>
+        作者： <a href="https://misskey.io/@darq">@darq@misskey.io</a>
+        <br>
+        このサービスの宣伝ノート： <a href="https://misskey.io/notes/9f6rav0n0z">notes/9f6rav0n0z</a>
+    </footer>
 </body>

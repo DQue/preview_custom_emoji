@@ -1,3 +1,7 @@
+main {
+    min-height: 256px;
+}
+
 #pv_parent {
     display: flex;
     flex-wrap: wrap;
@@ -28,4 +32,8 @@
     background: #eee;
     display: inline-block;
     padding: 12px;
+}
+
+footer {
+    padding-top: 1em;
 }
