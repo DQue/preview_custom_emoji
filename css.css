@@ -23,13 +23,6 @@ main {
     text-align: center;
 }
 
-.pv_container {
-    display: inline-block;
-    padding: 12px;
-    margin: 0;
-}
-
-
 .pv_title {
     background: #333;
     color: #eee;
@@ -37,6 +30,20 @@ main {
     font-size: 16px;
     margin: 0;
 }
+
+.pv_container {
+    display: inline-block;
+    padding: 6px;
+    margin: 4px 0;
+    display: flex;
+}
+
+.pv_img {
+    display: inline-block;
+    margin: auto;
+}
+
+
 
 
 footer {
