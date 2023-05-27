@@ -44,23 +44,29 @@ function 画像URL取得() {
     }
 }
 
-function 要素生成(url, bg, size, ttl) {
+function 要素生成(url, style_container, style_img, ttl) {
     const e = ce("div");
     e.className = "pv_child";
 
+
     const title = e.appendChild(ce("h1"));
     title.className = "pv_title";
-    if (ttl === undefined) ttl = `${size}px ${bg}`;
+    if (ttl === undefined) ttl = `${style_img.height} ${style_container.backgroundColor}`;
     title.appendChild(ct(ttl))
 
     const container = e.appendChild(ce("span"));
     container.className = "pv_container";
-    container.style.backgroundColor = bg;
+    for (let i in style_container) {
+        container.style[i] = style_container[i];
+        console.log(i)
+    }
 
     const img = container.appendChild(ce("img"));
     img.className = "pv_img";
-    img.style.height = size + "px";
     img.src = url;
+    for (let i in style_img) {
+        img.style[i] = style_img[i];
+    }
 
     return e;
 }
@@ -88,7 +94,10 @@ function プレビュー追加() {
     if (url === null) return;
     const color = $("i_color").value;
     const size = $("i_size").value;
-    const e = 要素生成(url, color, size);
+
+    const style_container = { backgroundColor: color };
+    const style_img = { height: `${size}px` };
+    const e = 要素生成(url, style_container, style_img);
     $("pv_parent").appendChild(e);
 }
 
@@ -96,23 +105,34 @@ function プリセットプレビュー追加() {
     const url = 画像URL取得();
     if (url === null) return;
     const list = [
-        { title: "Mi Light 本文", bg: "rgb(255,255,255)", size: 29.3906 },
-        { title: "Mi Light リアクション欄", bg: "rgb(242,242,242)", size: 18.375 },
-        { title: "Mi Light リアクション欄(自分が押した)", bg: "rgb(134,179,0)", size: 18.375 },
-        { title: "Mi Light リアクション欄(でかい)", bg: "rgb(242,242,242)", size: 27.5625 },
-        { title: "Mi Light リアクション欄(自分が押した)(でかい)", bg: "rgb(134,179,0)", size: 27.5625 },
-        { title: "Mi Dark 本文", bg: "rgb(45,45,45)", size: 29.3906 },
-        { title: "Mi Dark リアクション欄", bg: "rgb(56,56,56)", size: 18.375 },
-        { title: "Mi Dark リアクション欄(自分が押した)", bg: "rgb(134,179,0)", size: 18.375 },
-        { title: "Mi Dark リアクション欄(でかい)", bg: "rgb(56,56,56)", size: 27.5625 },
-        { title: "Mi Dark リアクション欄(自分が押した)(でかい)", bg: "rgb(134,179,0)", size: 27.5625 },
+        { title: "Mi Light 本文", bg: "rgb(255,255,255)", size: 29.3906, rad: "0px" },
+        { title: "Mi Light リアクション欄", bg: "rgb(242,242,242)", size: 18.375, btn: true },
+        { title: "Mi Light リアクション欄(自分が押した)", bg: "rgb(134,179,0)", size: 18.375, btn: true },
+        { title: "Mi Light リアクション欄(でかい)", bg: "rgb(242,242,242)", size: 27.5625, btn: true },
+        { title: "Mi Light リアクション欄(自分が押した)(でかい)", bg: "rgb(134,179,0)", size: 27.5625, btn: true },
+        { title: "Mi Dark 本文", bg: "rgb(45,45,45)", size: 29.3906, rad: "0px" },
+        { title: "Mi Dark リアクション欄", bg: "rgb(56,56,56)", size: 18.375, btn: true },
+        { title: "Mi Dark リアクション欄(自分が押した)", bg: "rgb(134,179,0)", size: 18.375, btn: true },
+        { title: "Mi Dark リアクション欄(でかい)", bg: "rgb(56,56,56)", size: 27.5625, btn: true },
+        { title: "Mi Dark リアクション欄(自分が押した)(でかい)", bg: "rgb(134,179,0)", size: 27.5625, btn: true },
     ];
 
     for (let i of list) {
-        const bg = i.bg;
-        const size = i.size;
         const title = i.title;
-        const e = 要素生成(url, bg, size, title);
+        const size = i.size;
+
+        const bg = i.bg;
+        let rad;
+
+        if (i.btn) {
+            rad = "6px";
+        } else {
+            rad = "0";
+        }
+
+        const style_container = { backgroundColor: bg, borderRadius: rad };
+        const style_img = { height: `${size}px` };
+        const e = 要素生成(url, style_container, style_img, title);
         $("pv_parent").appendChild(e);
     }
 }
@@ -126,6 +146,6 @@ function if_debug() {
     if (DEBUG_n1 > 0) return;
 
     DEBUG_n1++;
-    const e = 要素生成("https://dque.github.io/preview_custom_emoji/sample.png", "#abcdef", 80, "DEBUG");
+    const e = 要素生成("https://dque.github.io/preview_custom_emoji/sample.png", "#abcdef", 80, 0, "DEBUG");
     $("pv_parent").appendChild(e);
 }
