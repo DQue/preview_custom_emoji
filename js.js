@@ -1,4 +1,4 @@
-//DEBUG = true; DEBUG_n1 = 0;
+DEBUG = false; DEBUG_n1 = 0;
 
 function $(a) { return document.getElementById(a) }
 function ce(a) { return document.createElement(a) }
@@ -17,9 +17,31 @@ window.addEventListener("DOMContentLoaded", () => {
 }, false)
 
 function 画像URL取得() {
-    const e = $("u_file");
-    if (!e || !e.files || e.files.length === 0) return null;
-    return URL.createObjectURL($("u_file").files[0])
+    const e_file = $("u_file");
+    const e_url = $("u_file_url");
+    let flags = {
+        ok: false,
+        url: false,
+        file: false
+    };
+
+    if (e_url.value !== "") {
+        flags.ok = true;
+        flags.url = true;
+    }
+    if (e_file.files && e_file.files[0]) {
+        flags.ok = true;
+        flags.file = true;
+    }
+
+
+    if (flags.ok === false) return null;
+    if (flags.file) {
+        return URL.createObjectURL(e_file.files[0])
+    }
+    if (flags.url) {
+        return e_url.value;
+    }
 }
 
 function 要素生成(url, bg, size, ttl) {
