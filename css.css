@@ -15,26 +15,27 @@ main {
     flex-wrap: wrap;
 }
 
-.pv_container {
-    display: inline-block;
-    padding: 12px;
-}
-
 .pv_child {
     min-width: 120px;
     min-height: 40px;
     margin: 4px;
-    padding: 0 4px 4px;
     background: #999;
     text-align: center;
 }
+
+.pv_container {
+    display: inline-block;
+    padding: 12px;
+    margin: 0;
+}
+
 
 .pv_title {
     background: #333;
     color: #eee;
     font-style: normal;
     font-size: 16px;
-    margin: 0 -4px;
+    margin: 0;
 }
 
 
