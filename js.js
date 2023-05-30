@@ -1,4 +1,4 @@
-DEBUG_n1 = 0; DEBUG = false;
+DEBUG_n1 = 0; DEBUG = true;
 
 function $(a) { return document.getElementById(a) }
 function ce(a) { return document.createElement(a) }
@@ -44,28 +44,41 @@ function 画像URL取得() {
     }
 }
 
-function 要素生成(url, style_container, style_img, ttl) {
+function 要素生成(url, ttl, class_container, class_img, style_container, style_img) {
     const e = ce("div");
     e.className = "pv_child";
 
 
     const title = e.appendChild(ce("h1"));
     title.className = "pv_title";
-    if (ttl === undefined) ttl = `${style_img.height} ${style_container.backgroundColor}`;
+    if (ttl === null) ttl = `${style_img.height} ${style_container.backgroundColor}`;
     title.appendChild(ct(ttl))
 
     const container = e.appendChild(ce("span"));
-    container.className = "pv_container";
-    for (let i in style_container) {
-        container.style[i] = style_container[i];
-        console.log(i)
+    container.classList.add("pv_container");
+    if (class_container) {
+        class_container.forEach(c => {
+            container.classList.add(c);
+        });
+    }
+    if (style_container) {
+        for (let i in style_container) {
+            container.style[i] = style_container[i];
+        }
     }
 
     const img = container.appendChild(ce("img"));
-    img.className = "pv_img";
+    img.classList.add("pv_img");
     img.src = url;
-    for (let i in style_img) {
-        img.style[i] = style_img[i];
+    if (class_img) {
+        class_img.forEach(c => {
+            img.classList.add(c);
+        });
+    }
+    if (style_img) {
+        for (let i in style_img) {
+            img.style[i] = style_img[i];
+        }
     }
 
     return e;
@@ -97,7 +110,7 @@ function プレビュー追加() {
 
     const style_container = { backgroundColor: color };
     const style_img = { height: `${size}px` };
-    const e = 要素生成(url, style_container, style_img);
+    const e = 要素生成(url, null, null, null, style_container, style_img);
     $("pv_parent").appendChild(e);
 }
 
@@ -112,14 +125,16 @@ function プリセットプレビュー追加() {
         { title: "Mi Light リアクション欄(自分が押した)(でかい)", bg: "rgb(134,179,0)", size: 27.5625, btn: true },
         { title: "Mi Dark 本文", bg: "rgb(45,45,45)", size: 29.3906, rad: "0px" },
         { title: "Mi Dark リアクション欄", bg: "rgb(56,56,56)", size: 18.375, btn: true },
-        { title: "Mi Dark リアクション欄(自分が押した)", bg: "rgb(134,179,0)", size: 18.375, btn: true },
+        { title: "Mi Dark リアクション欄(自分が押した)", bg: "rgb(134,179,0)", size: 18.375, btn: true }, //Lightと同じだけど一応残す
         { title: "Mi Dark リアクション欄(でかい)", bg: "rgb(56,56,56)", size: 27.5625, btn: true },
-        { title: "Mi Dark リアクション欄(自分が押した)(でかい)", bg: "rgb(134,179,0)", size: 27.5625, btn: true },
+        { title: "Mi Dark リアクション欄(自分が押した)(でかい)", bg: "rgb(134,179,0)", size: 27.5625, btn: true }, //Lightと同じだけど一応残す
     ];
 
     for (let i of list) {
         const title = i.title;
         const size = i.size;
+        const class_container = [];
+        const class_img = [];
 
         const bg = i.bg;
         let rad, h;
@@ -134,7 +149,7 @@ function プリセットプレビュー追加() {
 
         const style_container = { backgroundColor: bg, borderRadius: rad, height: h };
         const style_img = { height: `${size}px` };
-        const e = 要素生成(url, style_container, style_img, title);
+        const e = 要素生成(url, title, class_container, class_img, style_container, style_img);
         $("pv_parent").appendChild(e);
     }
 }
@@ -142,12 +157,12 @@ function プリセットプレビュー追加() {
 
 
 
-
+// 表示確認用　ファイル追加→生成 をしなくてもサンプルが1個自動生成される
 function if_debug() {
     $("setting").hidden = false;
     if (DEBUG_n1 > 0) return;
 
     DEBUG_n1++;
-    const e = 要素生成("https://dque.github.io/preview_custom_emoji/sample.png", "#abcdef", 80, 0, "DEBUG");
+    const e = 要素生成("https://dque.github.io/preview_custom_emoji/sample.png", "DEBUG", ["test", "a"], null, { backgroundColor: "#abcdef" }, { height: "80px" });
     $("pv_parent").appendChild(e);
 }
