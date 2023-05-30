@@ -1,4 +1,4 @@
-DEBUG_n1 = 0; DEBUG = true;
+DEBUG_n1 = 0; DEBUG = false;
 
 function $(a) { return document.getElementById(a) }
 function ce(a) { return document.createElement(a) }
