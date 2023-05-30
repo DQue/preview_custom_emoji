@@ -125,9 +125,9 @@ function プリセットプレビュー追加() {
         { title: "Mi Light リアクション欄(自分が押した)(でかい)", bg: "rgb(134,179,0)", size: 27.5625, btn: true },
         { title: "Mi Dark 本文", bg: "rgb(45,45,45)", size: 29.3906, rad: "0px" },
         { title: "Mi Dark リアクション欄", bg: "rgb(56,56,56)", size: 18.375, btn: true },
-        { title: "Mi Dark リアクション欄(自分が押した)", bg: "rgb(134,179,0)", size: 18.375, btn: true }, //Lightと同じだけど一応残す
+        //        { title: "Mi Dark リアクション欄(自分が押した)", bg: "rgb(134,179,0)", size: 18.375, btn: true }, //Lightと同じだけど一応残す→やっぱいらない
         { title: "Mi Dark リアクション欄(でかい)", bg: "rgb(56,56,56)", size: 27.5625, btn: true },
-        { title: "Mi Dark リアクション欄(自分が押した)(でかい)", bg: "rgb(134,179,0)", size: 27.5625, btn: true }, //Lightと同じだけど一応残す
+        //        { title: "Mi Dark リアクション欄(自分が押した)(でかい)", bg: "rgb(134,179,0)", size: 27.5625, btn: true }, //Lightと同じだけど一応残す→やっぱいらない
     ];
 
     for (let i of list) {
