@@ -147,6 +147,8 @@ function プリセットプレビュー追加() {
             h = `${36 + i.size}px`;
         }
 
+        if (title.includes("自分が押した")) class_img.push("shadow");
+
         const style_container = { backgroundColor: bg, borderRadius: rad, height: h };
         const style_img = { height: `${size}px` };
         const e = 要素生成(url, title, class_container, class_img, style_container, style_img);
