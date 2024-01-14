@@ -1,0 +1,55 @@
+main {
+    min-height: 256px;
+}
+
+.form {
+    background: #eee;
+    display: inline-block;
+    padding: 12px;
+}
+
+
+
+#pv_parent {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pv_child {
+    min-width: 120px;
+    min-height: 40px;
+    margin: 4px;
+    background: #999;
+    text-align: center;
+}
+
+.pv_title {
+    background: #333;
+    color: #eee;
+    font-style: normal;
+    font-size: 16px;
+    margin: 0;
+}
+
+.pv_container {
+    display: inline-block;
+    padding: 6px;
+    margin: 4px 0;
+    display: flex;
+}
+
+.pv_img {
+    display: inline-block;
+    margin: auto;
+}
+
+.pv_img.shadow {
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+}
+
+
+
+
+footer {
+    padding-top: 1em;
+}

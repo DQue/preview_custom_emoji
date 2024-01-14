@@ -1,55 +1,151 @@
-main {
-    min-height: 256px;
-}
-
 .form {
     background: #eee;
     display: inline-block;
     padding: 12px;
 }
 
+#settings {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 12px;
+}
 
 
-#pv_parent {
+
+.main {
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
+    padding: 28px 32px;
+
+    font-size: 13.3px;
+    font-family: " Maru Gothic Pro", "BIZ UDGothic", "Roboto", "HelveticaNeue", "Arial", "sans-serif";
+    font-size: 13.3px;
+    line-height: 17.955px;
 }
 
-.pv_child {
-    min-width: 120px;
-    min-height: 40px;
-    margin: 4px;
-    background: #999;
-    text-align: center;
+.main.darkmode {
+    color: rgb(199, 209, 216);
+    background-color: rgb(35, 35, 35);
 }
 
-.pv_title {
-    background: #333;
-    color: #eee;
-    font-style: normal;
-    font-size: 16px;
-    margin: 0;
+.main.lightmode {
+    color: rgb(103, 103, 103);
+    background-color: rgb(249, 249, 249);
 }
 
-.pv_container {
-    display: inline-block;
-    padding: 6px;
-    margin: 4px 0;
-    display: flex;
-}
+.main_icon {
+    display: block;
+    width: 58px;
+    height: 58px;
 
-.pv_img {
-    display: inline-block;
-    margin: auto;
-}
+    margin: 0 14px 0 0;
+    flex-shrink: 0;
 
-.pv_img.shadow {
-    filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+    position: sticky;
+
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 
+.main_icon img {
+    width: 58px;
+    height: 58px;
+}
 
 
-footer {
-    padding-top: 1em;
+.main_article {
+    flex: 1;
+    min-width: 0;
+
+}
+
+
+.main_article_header {
+    font-weight: 700;
+}
+
+.main_article_screenname {}
+
+.main_article_text img {
+    height: 2em;
+    vertical-align: middle;
+    transition: transform .2s ease;
+}
+
+.main_article_text img:hover {
+    transform: scale(1.2);
+}
+
+
+.main_article_reaction_container {
+    display: inline-flex;
+    margin: 2px;
+    padding: 0 6px;
+    align-items: center;
+    justify-content: center;
+}
+
+body[data-reaction_size="large"] .main_article_reaction_container {
+    height: 52px;
+    font-size: 2em;
+    border-radius: 8px;
+}
+
+body[data-reaction_size="medium"] .main_article_reaction_container {
+    height: 42px;
+    font-size: 1.5em;
+    border-radius: 6px;
+}
+
+body[data-reaction_size="small"] .main_article_reaction_container {
+    height: 32px;
+    font-size: 1em;
+    border-radius: 4px;
+}
+
+
+
+.darkmode .main_article_reaction_container {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.lightmode .main_article_reaction_container {
+    background-color: (0, 0, 0, 0.05);
+}
+
+.main_article_reaction_container.reacted {
+    background: rgba(180, 233, 0, 0.15);
+    border: 1px solid rgb(134, 179, 0);
+    color: rgb(139, 179, 0)
+}
+
+.lightmode .main_article_reaction_container.reacted {
+    background-color: (134, 179, 0, 0.15);
+}
+
+.main_article_reaction_img {
+    height: 1.25em;
+    vertical-align: -0.25em;
+}
+
+body[data-limit_width="true"] .main_article_reaction_img {
+    max-width: 70px;
+    object-fit: contain;
+}
+
+
+.main_article_reaction_num {
+    font-size: 0.9em;
+    margin-left: 4px;
+}
+
+
+
+
+
+
+#footer {
+    border-top: 1px solid #ccc;
+    margin-top: 12px;
+    padding-top: 12px;
 }

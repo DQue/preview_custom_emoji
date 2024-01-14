@@ -11,36 +11,59 @@
         <form id="form_upload">
             <input type="file" id="u_file" accept="image/*">
             または
-            <input type="url" id="u_file_url" placeholder="URLを入力">
+            <input type="url" id="u_file_url" placeholder="画像URLを入力"><button id="u_url_submit">↓</button>
+        </form>
+        <form id="settings">
+            リアクションの表示サイズ
+            <label><input type="radio" class="reaction_size" name="reaction_size" value="large">大</label>
+            <label><input type="radio" class="reaction_size" name="reaction_size" value="medium" checked>中</label>
+            <label><input type="radio" class="reaction_size" name="reaction_size" value="small">小</label><br>
+            <label><input type="checkbox" id="reaction_limit_width">リアクションの最大横幅を制限し、縮小して表示する</label>
         </form>
 
-        <div id="setting"><br>
-            <div class="form">
-                <input type="button" value="プリセット生成" id="i_btn_preset">
-            </div>
-            または
-            <div class="form">
-                背景色 <input type="color" id="i_color"><span id="o_color"></span><br>
-                サイズ <input type="range" id="i_size" min="1" max="256" step="1" value="18"><span
-                    id="o_size"></span>px<br>
-                <input type="button" value="この設定で生成" id="i_btn">
-            </div>
-        </div>
 
         <div id="pv_parent">
 
-        </div>
+            <article class="main lightmode">
+                <span class="main_icon"><img alt="アイコン" src="./img/icon.webp"></span>
+                <div class="main_article">
+                    <header class="main_article_header">カスタム絵文字プレビュー
+                        <span class="main_article_screenname">@custom_emoji_preview</span>
+                    </header>
+                    <div class="main_article_text">おやすみすきー！</div>
+                    <div class="main_article_reactions"></div>
+
+                </div>
+            </article>
+            <article class="main darkmode">
+                <span class="main_icon"><img alt="アイコン" src="./img/icon.webp"></span>
+                <div class="main_article">
+                    <header class="main_article_header">カスタム絵文字プレビュー
+                        <span class="main_article_screenname">@custom_emoji_preview</span>
+                    </header>
+                    <div class="main_article_text">おやすみすきー！</div>
+                    <div class="main_article_reactions"></div>
+
+                </div>
+            </article>
     </main>
 
-    <footer>
-        作者： <a href="https://misskey.io/@darq" target="_blank">@darq@misskey.io</a>
-        <br>
-        このサービスの宣伝ノート： <a href="https://misskey.io/notes/9f6rav0n0z" target="_blank">notes/9f6rav0n0z</a>
-        <br>
-        <a href="https://misskeyshare.link/share.html?text="
-            onclick="window.open(this.href+encodeURI(decodeURI(document.title))+'&url='+encodeURI(decodeURI(location.href)), '', 'width=500,height=400'); return false;"><img
-                src="notebutton.webp" width="80" height="20"></a>
-        <br>
-        ※スマホ非対応です　ごめん
+    <footer id="footer">
+        過去のバージョン
+        <ul>
+            <li><a href="./v1/index.html">バージョン1(～2024/1/14)</a></li>
+        </ul>
+        <div>
+            作者<a href="https://misskey.io/@darq" target="_blank">@darq@misskey.io</a> /
+            カスタム絵文字プレビュー宣伝ノート<a href="https://misskey.io/notes/9f6rav0n0z" target="_blank">notes/9f6rav0n0z</a>
+            <br>
+            <a href="https://misskeyshare.link/share.html?text="
+                onclick="window.open(this.href+encodeURI(decodeURI(document.title))+'&url='+encodeURI(decodeURI(location.href)), '', 'width=500,height=400'); return false;"><img
+                    src="notebutton.webp" width="80" height="20"></a>
+            <br>
+            ※スマホ非対応です　ごめん<br>
+            ※@custom_emoji_preview@misskey.ioというアカウントは取得していません。もし存在したとしても@darq@misskey.ioとは無関係です。
+        </div>
+
     </footer>
 </body>
